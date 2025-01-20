@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - E-COMMERCE</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header, footer {
+            background: linear-gradient(90deg, #9cbb84, #50c878);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo img {
+            height: 90px; 
+            width: auto; 
+            display: block;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: white;
+            color: #50c878;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-content li {
+            list-style: none;
+        }
+
+        .dropdown-content li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dropdown-content li a:hover {
+            background-color: #50c878;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2C5F2D;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(44, 95, 45, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 10px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            border-top: 2px solid #4CAF50;
+            padding-top: 10px;
+        }
+		
+        .header-image {
+            width: 100%;
+            height: 400px; 
+            object-fit: cover;
+            position: relative;
+        }
+
+        .about-header {
+			position: absolute;
+			top: 45%; /* Adjust this percentage to move the box lower */
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			color: white;
+			font-weight: bold;
+			background: rgba(0, 0, 0, 0.5);
+			padding: 1rem;
+			border-radius: 10px;
+		}
+
+        .about-header h1 {
+            font-size: 3rem;
+        }
+
+        .about-header p {
+            font-size: 1.5rem;
+        }
+
+        .info-sections {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .colored-box {
+            background-color: #eaf0e3;
+            border-left: 5px solid #50c878;
+            padding: 1rem;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .colored-box h3 {
+            color: #50c878;
+            font-size: 1.6rem;
+            font-family: 'Segoe UI', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding: 1rem;
+            background-color: transparent;
+        }
+
+        .team-member img {
+            width: 190px;
+            height: 220px;
+            border-radius: 0%; 
+            margin-right: 80px;
+        }
+
+        .team-member h3 {
+            margin: 0;
+            color: #50c878;
+            font-size: 2rem;
+            font-family: 'Segoe UI', sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+		
+		.contact-us a {
+			color: blue;
+			font-weight: bold;
+			text-decoration: none; /* Removes underline */
+		}
+
+		.contact-us a:hover {
+			text-decoration: underline; /* Adds underline on hover for better accessibility */
+		}
+
+
+         footer {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .team-member {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .team-member img {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .info-sections {
+                flex-direction: column;
+            }
+        }
+
+        h3.team-title {
+            font-size: 2rem;
+            color: #50c878;
+        }
+
+        .highlight-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #eaf0e3;
+            padding: 1rem 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid #50c878;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight-box h2 {
+            color: #50c878;
+            font-size: 2rem;
+        }
+
+        .highlight-box p {
+            color: #555;
+        }
+
+        .features {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+			flex: 1;
+			max-width: 300px; /* Ensure consistent width */
+			text-align: center;
+			padding: 1rem;
+			background-color: #eaf0e3;
+			border: 1px solid #50c878;
+			border-radius: 5px;
+		}
+
+
+        .feature-item h3 {
+            color: #50c878;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+			<a href="index.html">
+				<img src="picture/logo.rmv.bg.png" alt="E-COMMERCE Logo">
+			</a>
+		</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="news&update.html">News & Updates</a></li>
+                <li class="dropdown">
+                    <a href="#">Archive</a>
+                    <ul class="dropdown-content">
+                        <li><a href="archive.html">Job Market</a></li>
+                        <li><a href="archive2.html"> Education</a></li>
+                    </ul>
+                </li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div style="display: flex; align-items: flex-start; gap: 2rem; justify-content: center;">
+    <!-- Team Members Section -->
+    <div style="flex: 2;">
+        <h1 class="main-title">ABOUT US</h1>
+        <div class="features" style="justify-content: center; text-align: center;">
+            <div class="feature-item">
+                <h3>Our Objectives</h3>
+                <ul>
+                    <li><strong>Support Academic Research:</strong> Providing essential content for students, educators, and researchers.</li>
+                    <li><strong>Promote Business Growth:</strong> A valuable resource for businesses to stay competitive with emerging trends.</li>
+                    <li><strong>Ensure Digital Preservation:</strong> Preserving key resources for future access and research.</li>
+                </ul>
+            </div>
+            <div class="feature-item">
+                <h3>Our Vision</h3>
+                <p>We envision a future where e-commerce knowledge is universally accessible, helping entrepreneurs, researchers, and businesses succeed. Our platform aims to be a global hub for digital commerce insights, driving positive change and innovation in the e-commerce landscape for years to come.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Our Mission</h3>
+                <p>Our mission is to preserve and provide easy access to the essential knowledge, trends, and innovations within the e-commerce industry. We aim to build a comprehensive, user-friendly platform that empowers individuals and businesses to thrive in the digital marketplace, providing them with the tools to stay informed, competitive, and future-ready.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br></br>
+			<div style="display: flex; align-items: flex-start; gap: 2rem; justify-content: center;">
+    <!-- Team Role Section -->
+    <div style="flex: 2;">
+        <h1 class="main-title">TEAM ROLE</h1>
+			</div>
+			</div>
+			
+            <div class="team-member">
+                <img src="picture/diana.jpeg" alt="Nur Diana Hedzellina Binti Syaqir">
+                <div>
+                    <h3>Nur Diana Hedzellina Binti Syaqir</h3>
+                    <p>As the primary website developer, Diana is responsible for designing and developing the structure of the website. She ensures the platform is user-friendly, visually appealing, and fully functional, making it easy for users to navigate and explore the repository. Hence, handling the part of the report on the implementation and the methodology to maintain the synchronization between report and the web portal.</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <img src="picture/syafira.jpeg" alt="Nur Syafira Aleiya Binti Nordin">
+                <div>
+                    <h3>Nur Aleiya Syafira Binti Nordin</h3>
+					<P>Syafira also plays a key role as a website developer, focusing on the backend development and ensuring seamless performance across all devices. Her work ensures that the website's architecture is optimized for quick access and reliable resource storage. In the report, she handles and finalizes the writing process from the very beginning until the sources.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background-color: black; color: white; padding: 20px;">
+    <!-- Contact Us Section -->
+    <div class="contact-us" style="flex: 1;">
+        <div style="display: flex; align-items: flex-start; gap: 2rem; justify-content: center;">
+    <!-- Team Role Section -->
+    <div style="flex: 2;">
+        <h1 class="main-title">CONTACT US</h1>
+			</div>
+			</div>
+        <p style="color: white;">For inquiries, suggestions, or collaborations, feel free to reach out to us:</p>
+        <ul style="list-style: none; padding: 0;">
+            <li>
+                <strong style="color: white;">Nur Diana Hedzellina Binti Syaqir</strong><br>
+                Email: <a href="mailto:nurdianashaqir@gmail.com" style="color: white; text-decoration: none;">nurdianashaqir@gmail.com</a><br>
+                Phone: 011-6947 6447
+            <br><br>
+                <strong style="color: white;">Nur Syafira Aleiya Binti Nordin</strong><br>
+                Email: <a href="mailto:alieyanrdn@gmail.com" style="color: white; text-decoration: none;">alieyanrdn@gmail.com</a><br>
+                Phone: 011-2885 9812
+            </li>
+        </ul>
+        <p class="footer-text" style="color: white;">&copy; 2025 My Website. All rights reserved.</p>
+    </div>
+</footer>
+
+
+
+</body>
+</html>

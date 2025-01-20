@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive Page - E-COMMERCE</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header, footer {
+            background: linear-gradient(90deg, #9cbb84, #50c878);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+		.logo img {
+			height: 90px; 
+			width: auto; 
+			display: block;
+		}
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: white;
+            color: #50c878;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-content li {
+            list-style: none;
+        }
+
+        .dropdown-content li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dropdown-content li a:hover {
+            background-color: #50c878;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            text-align: center;
+        }
+		
+		
+        main {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2C5F2D;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(44, 95, 45, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 10px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            border-top: 2px solid #4CAF50;
+            padding-top: 10px;
+        }
+
+        .job-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .job-box {
+            background-color: white ;
+            border: 2px solid #50c878;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .job-box h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #50c878;
+        }
+
+        .job-box p {
+            margin: 0.5rem 0;
+        }
+		
+		.job-box img {
+			width: 100%;
+			object-fit: cover; 
+			border-radius: 10px;
+			margin-bottom: 15px;
+			outline: 2px solid #50c878; 
+		}
+
+
+        .hover-overlay {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .job-box:hover .hover-overlay {
+            display: block;
+        }
+
+        .hover-overlay h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .hover-overlay p {
+            margin: 0.2rem 0;
+        }
+
+        .hover-overlay .view-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #50c878;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .hover-overlay .view-button:hover {
+            background-color: white;
+            color: #50c878;
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+		
+		.job-box img {
+        width: 100%;
+        height: 200px; /* Set a fixed height */
+        object-fit: cover; /* Ensure images are cropped proportionally */
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+			<a href="index.html">
+				<img src="picture/logo.rmv.bg.png" alt="E-COMMERCE Logo">
+			</a>
+		</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="news&update.html">News & Updates</a></li>
+                <li class="dropdown">
+                    <a href="#">Archive</a>
+                    <ul class="dropdown-content">
+                        <li><a href="archive.html">Job Market</a></li>
+                        <li><a href="archive2.html"> Education</a></li>
+                    </ul>
+                </li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+	<div style="display: flex; align-items: flex-start; gap: 2rem; justify-content: center;">
+    <!-- Team Role Section -->
+    <div style="flex: 2;">
+        <h1 class="main-title">E- COMMERCE JOB MARKET</h1>
+			</div>
+			</div>
+        <div class="job-container">
+            <div class="job-box">
+			<img src="picture/job1.png" alt="Job Image">
+                <h2>E-Commerce Assistant Manager</h2>
+                <p><strong>Key Responsibilities:</strong></p>
+                <p>- Manage daily operations.</p>
+                <p>- Oversee team activities.</p>
+                <p><strong>Key Requirements:</strong></p>
+                <p>- Bachelor's degree in Business.</p>
+                <p>- 2+ years of experience.</p>
+
+                <div class="hover-overlay">
+                    <h3>DESCRIPTION</h3>
+                    <p>* Archive success: YES</p>
+                    <p>* Duration: 20:29:01</p>
+                    <p>* File size: 37696390 bytes</p>
+                    <p>* File archived: 969 files</p>
+                    <a href="https://www.asiarecruit.com.my/job-details.php?id=AON1" target="_blank" class="view-button">View Page</a>
+                </div>
+            </div>
+            <div class="job-box">
+			<img src="picture/job2.png" alt="Job Image">
+                <h2>What does an e-commerce manager do – and how do you hire one?</h2>
+                <p><strong>What is an e-commerce manager?</strong></p>
+				<p>- An e-commerce manager is in charge of a retail store’s online presence.</>
+                <p><strong>Main Responsibilities:</strong></p>
+				<p>- Your e-commerce manager should already have a deep understanding of how online stores work and how to help them flourish as much as possible.</p>
+
+                <div class="hover-overlay">
+                    <h3>DESCRIPTION</h3>
+                    <p>* Archive success: YES</p>
+                    <p>* Duration: 20:35:13</p>
+                    <p>* File size: 4399042 bytes</p>
+                    <p>* File archived: 33 files</p>
+                    <a href="https://www.testgorilla.com/blog/what-ecommerce-manager-do/" target="_blank" class="view-button">View Page</a>
+                </div>
+            </div>
+            <div class="job-box">
+			<img src="picture/job3.jpg" alt="Job Image">
+                <h2>E-commerce Channel Development Senior Executive/ Assistant Manager (Malaysia)</h2>
+                <p><strong>Company Description</strong></p>
+				<p>- Synagie is an eCommerce company that provides end-to-end commerce enablement solutions </p>
+                <p><strong>Job Description</strong></p>
+				<p>- Key Responsibilities:Run regular cadences with the CDM Executives and Team Leads to guide and nurture the team’s growth.</p>
+				
+
+                <div class="hover-overlay">
+                    <h3>DESCRIPTION</h3>
+                    <p>* Archive success: YES</p>
+                    <p>* Duration: 20:37:47</p>
+                    <p>* File size: 1855068 bytes</p>
+                    <p>* File archived: 19 files</p>
+                    <a href="https://jobs.smartrecruiters.com/SynagieInc/744000036341098-e-commerce-customer-business-development-executive" target="_blank" class="view-button">View Page</a>
+                </div>
+            </div>
+			
+			<div class="job-box">
+			<img src="picture/job4.png" alt="Job Image">
+				<h2>Assistant Manager - E-commerce Sales</h2>
+				<p><strong>Short Description:</strong></p>
+				<p>- Key role in managing e-commerce sales strategy.</p>
+				<p><strong>Job Responsibilities:</strong></p>
+				<p>- Develop and implement e-commerce sales plans.</p>
+   
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YES</p>
+					<p>* Duration: 20:41:38</p>
+					<p>* File size: 2025665 bytes</p>
+					<p>* File archived: 49 files</p>
+					<a href=	"https://careers.omron.com/job/Gurgaon-Assistant-Manager-E-commerce-Sales/961565455/" target="_blank" class="view-button">View Page</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/job5.jpg" alt="Job Image">
+				<h2>Advantages of Hiring an Ecommerce Assistant</h2>
+				<p><strong>Overview:</strong></p>
+				<p>- What is an eCommerce assistant?</p>
+				<p>- How can they help with operations?</p>
+				<p><strong>Tasks:</strong></p>
+				<p>- eCommerce Virtual Assistant tasks.</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YES</p>
+					<p>* Duration: 20:56:28</p>
+					<p>* File size: 2732600 bytes</p>
+					<p>* File archived: 56 files</p>
+					<a href="https://invedus.com/blog/advantages-of-hiring-an-ecommerce-assistant/" target="_blank" class="view-button">View Page</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/job6.png" alt="Job Image">
+				<h2>E-commerce Manager - Creative Industries</h2>
+				<p><strong>Description of Tasks:</strong></p>
+				<p>- Oversee online sales and strategy.</p>
+				<p><strong>Minimum Requirements:</strong></p>
+				<p>- Proven experience in managing e-commerce platforms.</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YES</p>
+					<p>* Duration: 21:22:06</p>
+					<p>* File size: 1753435 bytes</p>
+					<p>* File archived: 9 files</p>
+					<a href="https://www.hkengage.gov.hk/en/jobs-and-salaries/salary-index/e-commerce-managers/" target="_blank" class="view-button">View Page</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/job7.png" alt="Job Image">
+				<h2>ECommerce Assistant Job Description Template</h2>
+				<p><strong>Overview:</strong></p>
+				<p>- Why use our ECommerce Assistant job description example?</p>
+				<p>- Where to post an ECommerce Assistant job advert?</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YES</p>
+					<p>* Duration: 21:25:05</p>
+					<p>* File size: 4467069 bytes</p>
+					<p>* File archived: 141 files</p>
+					<a href="https://careerposter.co.uk/templates/job-description/ecommerce-assistant/" target="_blank" class="view-button">View Page</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/job8.png" alt="Job Image">
+				<h2>Assistant Manager - E-Commerce</h2>
+				<p><strong>Responsibilities:</strong></p>
+				<p>- Plan and execute e-commerce strategies.</p>
+				<p><strong>Qualifications:</strong></p>
+				<p>- Bachelor's degree and relevant experience.</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YES</p>
+					<p>* Duration: 21:32:56</p>
+					<p>* File size: 3212874 bytes</p>
+					<p>* File archived: 41 files</p>
+					<a href="https://www.expertia.ai/blogs/jd/assistant-manager-e-commerce-job-description-54438g" target="_blank" class="view-button">View Page</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/job9.png" alt="Job Image">
+				<h2>Assistant Manager - Warehouse (E-commerce Operations)</h2>
+				<p><strong>Job Description:</strong></p>
+				<p>- Manage order life-cycle and operational processes.</p>
+				<p><strong>Key Knowledge:</strong></p>
+				<p>- Understand ERP systems and key operational processes.</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YES</p>
+					<p>* Duration: 21:36:58</p>
+					<p>* File size: 163051373 bytes</p>
+					<p>* File archived: 333 files</p>
+					<a href="https://admin.prozo.com/job-details?id=2" target="_blank" class="view-button">View Page</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/job10.png" alt="Job Image">
+				<h2>Ecommerce Manager Job Description</h2>
+				<p><strong>Overview:</strong></p>
+				<p>- Key aspects of the eCommerce manager role.</p>
+				<p><strong>Benefits:</strong></p>
+				<p>- Access top candidates in just 7 days.</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YES</p>
+					<p>* Duration: 21:42:00</p>
+					<p>* File size: 10706365 bytes</p>
+					<p>* File archived: 135 files</p>
+					<a href="https://www.prosperity.ie/job-descriptions/ecommerce-manager-job-description" target="_blank" class="view-button">View Page</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/job1.png" alt="Job Image">
+				<h2>eCommerce Manager/Assistant Manager</h2>
+				<p><strong>About the Job:</strong> eCommerce Manager/Assistant Manager</p>
+				<p><strong>Job Description:</strong></p>
+				<p>- Manage online sales strategies and platforms.</p>
+				<p><strong>Job Responsibilities:</strong></p>
+				<p>- Optimize online store performance.</p>
+				<p><strong>Job Requirements:</strong></p>
+				<p>- Bachelor's degree in related field.</p>
+				<p>- 3+ years of experience.</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YES</p>
+					<p>* Duration: 21:48:22</p>
+					<p>* File size: 1654332 bytes</p>
+					<p>* File archived: 34 files</p>
+					<a href="https://www.careers-page.com/agensi-pekerjaan-asia-recruit-sdn-bhd/job/QY4XV6X5" target="_blank" class="view-button">View Page</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/job12.png" alt="Job Image">
+				<h2>Assistant Manager eCommerce Business Analyst</h2>
+				<p><strong>Job Description:</strong></p>
+				<p>- Analyze business trends and performance data.</p>
+				<p><strong>Main Tasks:</strong></p>
+				<p>- Provide actionable insights to boost eCommerce efficiency.</p>
+				<p><strong>Qualifications:</strong></p>
+				<p>- Bachelor's degree and analytical skills.</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YES</p>
+					<p>* Duration: 21:51:47</p>
+					<p>* File size: 1738717 bytes</p>
+					<p>* File archived: 34 files</p>
+					<a href="https://www.careers-page.com/people-profilers/job/QWRRYW3W" target="_blank" class="view-button">View Page</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/job13.png" alt="Job Image">
+				<h2>Browse Job Titles: Ecommerce</h2>
+				<p><strong>Titles Include:</strong></p>
+				<p>- Ecommerce Manager</p>
+				<p>- Ecommerce Trading Assistant</p>
+				<p>- Ecommerce Trading Manager</p>
+				<p>- Ecommerce Trading Executive</p>
+				<p>- eCommerce Assistant</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YES</p>
+					<p>* Duration: 22:01:43</p>
+					<p>* File size: 588980 bytes</p>
+					<p>* File archived: 28 files</p>
+					<a href="https://www.fashionpersonnel.co.uk/browse-by-position/ecommerce/ecommerce-assistant" target="_blank" class="view-button">View Page</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/job14.png" alt="Job Image">
+				<h2>Ecommerce Manager / Assistant Manager</h2>
+				<p><strong>Job Responsibilities:</strong></p>
+				<p>- Manage and implement eCommerce strategies.</p>
+				<p><strong>Requirements:</strong></p>
+				<p>- Bachelor's degree and proven track record in eCommerce.</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YES</p>
+					<p>* Duration: 22:08:17</p>
+					<p>* File size: 9722769 bytes</p>
+					<p>* File archived: 29 files</p>
+					<a href="https://www.cornerstone.jp/job/ecommerce-manager-slash-assistant-manager?source=google.com" target="_blank" class="view-button">View Page</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/job15.png" alt="Job Image">
+				<h2>Assistant Manager, eCommerce Product and Customer Experience</h2>
+				<p><strong>Who We Are:</strong></p>
+				<p>- A leading eCommerce platform provider.</p>
+				<p><strong>What We Offer:</strong></p>
+				<p>- Competitive salary and benefits.</p>
+				<p><strong>What We're Looking For:</strong></p>
+				<p>- Dedicated professionals with eCommerce expertise.</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YES</p>
+					<p>* Duration: 22:13:59</p>
+					<p>* File size: 636693 bytes</p>
+					<p>* File archived: 19 files</p>
+					<a href="https://careers.loewshotels.com/search/" target="_blank" class="view-button">View Page</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/job16.png" alt="Job Image">
+				<h2>Ecommerce Manager Job Description</h2>
+				<p><strong>Role Overview:</strong></p>
+				<p>- Lead and manage eCommerce operations.</p>
+				<p><strong>Responsibilities:</strong></p>
+				<p>- Develop strategies to enhance online presence.</p>
+				<p><strong>Requirements:</strong></p>
+				<p>- Strong organizational and communication skills.</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YES</p>
+					<p>* Duration: 22:23:16</p>
+					<p>* File size: 6373857 bytes</p>
+					<p>* File archived: 175 files</p>
+					<a href="https://iceclog.com/5-skills-every-e-commerce-manager-should-master/" target="_blank" class="view-button">View Page</a>
+				</div>
+			</div>
+
+        </div>
+    </main>
+    <footer>
+        <p class="footer-text">&copy; 2025 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

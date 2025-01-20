@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Knowledge Repository</title>
+    <style>
+         body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header, footer {
+            background: linear-gradient(90deg, #9cbb84, #50c878);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+		.logo img {
+			height: 90px; 
+			width: auto; 
+			display: block;
+		}
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: white;
+            color: #50c878;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-content li {
+            list-style: none;
+        }
+
+        .dropdown-content li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dropdown-content li a:hover {
+            background-color: #50c878;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2C5F2D;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(44, 95, 45, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 10px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            border-top: 2px solid #4CAF50;
+            padding-top: 10px;
+        }
+
+        .feature-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .feature {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            flex: 1 1 30%;
+            max-width: 300px;
+            min-width: 280px;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature h2 {
+            font-size: 1.5rem;
+            color: #50c878;
+            margin-bottom: 1rem;
+        }
+
+        .feature p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+		
+			.feature {
+		background-color: #e0f7e0; 
+		border: 1px solid #ddd;
+		border-radius: 10px;
+		padding: 1.5rem;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		cursor: pointer;
+		transition: transform 0.3s, box-shadow 0.3s;
+		flex: 1 1 30%;
+		max-width: 300px;
+		min-width: 280px;}
+
+
+        /* Popup Style */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .popup-content h2 {
+            margin-top: 0;
+            color: #50c878;
+        }
+
+        .popup-content p {
+            color: #555;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #50c878;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .close-btn:hover {
+            background-color: #3a9a5e;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+			<a href="index.html">
+				<img src="picture/logo.rmv.bg.png" alt="E-COMMERCE Logo">
+			</a>
+		</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="news&update.html">News & Updates</a></li>
+                <li class="dropdown">
+                    <a href="#">Archive</a>
+                    <ul class="dropdown-content">
+                        <li><a href="archive.html">Job Market</a></li>
+                        <li><a href="archive2.html"> Education</a></li>
+                    </ul>
+                </li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+	
+		<video autoplay muted loop>
+        <source src="video/video2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <main>
+        <h1 class="main-title">Unlock the World of E-Commerce Knowledge</h1>
+        <p class="subtitle">Preserving the Past, Empowering the Present, Inspiring the Future</p>
+
+        <div class="feature-section">
+            <div class="feature" onclick="showPopup('popup1')">
+			<img src="picture/home1.png" alt="Inspiration Behind the Project" style="width: 100%; height: auto;">
+                <h2>What is E-Commerce?</h2>
+                <p>E-commerce refers to buying and selling over the internet, transforming business and consumer interactions globally.</p>
+            </div>
+            <div class="feature" onclick="showPopup('popup2')">
+			<img src="picture/home2.jpg" alt="Inspiration Behind the Project" style="width: 100%; height: auto;">
+                <h2>The Purpose of E-Commerce</h2>
+                <p>E-commerce enables businesses to operate 24/7, reaching global markets with greater convenience and accessibility.</p>
+            </div>
+            <div class="feature" onclick="showPopup('popup3')">
+			<img src="picture/home3.jpg" alt="Inspiration Behind the Project" style="width: 100%; height: auto;">
+                <h2>The Growth of E-Commerce</h2>
+                <p>Exponential growth driven by improved internet, payment systems, and mobile tech has turned e-commerce into a trillion-dollar industry.</p>
+            </div>
+            <div class="feature" onclick="showPopup('popup4')">
+			<img src="picture/home4.jpg" alt="Inspiration Behind the Project" style="width: 100%; height: auto;">
+                <h2>The Benefits for Businesses</h2>
+                <p>Global reach, reduced costs, 24/7 availability, and personalized experiences are just a few advantages for e-commerce businesses.</p>
+            </div>
+            <div class="feature" onclick="showPopup('popup5')">
+			<img src="picture/home5.jpg" alt="Inspiration Behind the Project" style="width: 100%; height: auto;">
+                <h2>The Benefits for Consumers</h2>
+                <p>Consumers enjoy convenience, variety, secure payments, and time-saving benefits with online shopping.</p>
+            </div>
+            <div class="feature" onclick="showPopup('popup6')">
+			<img src="picture/home6.jpg" alt="Inspiration Behind the Project" style="width: 100%; height: auto;">
+                <h2>E-Commerce Trends</h2>
+                <p>AI, mobile commerce, social commerce, and voice commerce are transforming the future of e-commerce.</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 E-Commerce Knowledge Repository. All rights reserved.</p>
+    </footer>
+
+    <!-- Popups -->
+    <div id="popup1" class="popup-overlay">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup()">Close</button>
+            <h2>What is E-Commerce?</h2>
+            <p>E-commerce, or electronic commerce, refers to the buying and selling of goods and services over the internet. It allows businesses to connect with customers, vendors, and partners worldwide through online platforms. This digital transaction process involves various activities such as online shopping, electronic payments, internet banking, and digital marketing. The rise of e-commerce has redefined commerce itself, making it more accessible and convenient than ever before.</p>
+        </div>
+    </div>
+
+    <div id="popup2" class="popup-overlay">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup()">Close</button>
+            <h2>The Purpose of E-Commerce</h2>
+            <p>The primary purpose of e-commerce is to create a streamlined, convenient, and accessible platform for transactions. E-commerce eliminates the limitations of physical store operations by enabling businesses to operate 24/7, reaching global markets without geographical constraints. It empowers consumers by providing them with the ability to research, compare, and purchase products or services from the comfort of their homes or on the go, enhancing customer experience and expanding business reach.</p>
+        </div>
+    </div>
+
+    <div id="popup3" class="popup-overlay">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup()">Close</button>
+            <h2>The Growth of E-Commerce</h2>
+            <p>E-commerce has experienced exponential growth in recent years, with online shopping becoming an integral part of everyday life. Factors such as internet accessibility, improved payment systems, mobile technology, and social media marketing have all contributed to this growth. Today, it is a trillion-dollar industry that spans multiple sectors including retail, entertainment, education, and even healthcare. As digital infrastructure continues to evolve, the potential for e-commerce to expand into new markets and industries is limitless.</p>
+        </div>
+    </div>
+
+    <div id="popup4" class="popup-overlay">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup()">Close</button>
+            <h2>The Benefits for Businesses</h2>
+            <p>For businesses, e-commerce offers several advantages:</p>
+            <ul>
+                <li><b>Global Reach:</b> E-commerce breaks down geographical barriers, allowing even small businesses to tap into global markets.</li>
+                <li><b>Cost Efficiency:</b> Reduces overhead costs associated with maintaining physical stores.</li>
+                <li><b>24/7 Availability:</b> E-commerce stores are always open, providing increased convenience for customers.</li>
+                <li><b>Personalized Experiences:</b> AI and data analytics enable tailored recommendations and promotions.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="popup5" class="popup-overlay">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup()">Close</button>
+            <h2>The Benefits for Consumers</h2>
+            <p>For consumers, e-commerce offers the ultimate convenience:</p>
+            <ul>
+                <li><b>Convenience and Accessibility:</b> Shop from anywhere, anytime, without visiting physical stores.</li>
+                <li><b>Variety and Comparison:</b> Access a wide range of products and services with the ability to compare features and prices.</li>
+                <li><b>Time-Saving:</b> Simplifies the shopping experience and reduces travel and browsing time.</li>
+                <li><b>Secure Payment Systems:</b> Safe transactions through encryption, buyer protection, and secure gateways.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="popup6" class="popup-overlay">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup()">Close</button>
+            <h2>E-Commerce Trends</h2>
+            <p>As technology continues to advance, new trends are emerging that are shaping the future of e-commerce. Some of these trends include:</p>
+            <ul>
+                <li><b>Artificial Intelligence (AI):</b> Personalized recommendations, customer service automation, and inventory management improvements.</li>
+                <li><b>Mobile Commerce (M-Commerce):</b> Growing smartphone usage allows consumers to shop directly from their devices.</li>
+                <li><b>Social Commerce:</b> Selling products directly within social media platforms like Instagram and Facebook.</li>
+                <li><b>Voice Commerce:</b> Making purchases through voice-activated devices like Amazon Alexa and Google Home.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function showPopup(popupId) {
+            document.getElementById(popupId).style.display = 'block';
+        }
+
+        function closePopup() {
+            const popups = document.querySelectorAll('.popup-overlay');
+            popups.forEach(popup => {
+                popup.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Updates - E-COMMERCE</title>
+    <style>
+         body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header, footer {
+            background: linear-gradient(90deg, #9cbb84, #50c878);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+		.logo img {
+			height: 90px; 
+			width: auto; 
+			display: block;
+		}
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: white;
+            color: #50c878;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-content li {
+            list-style: none;
+        }
+
+        .dropdown-content li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dropdown-content li a:hover {
+            background-color: #50c878;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .news-item {
+            position: relative;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+
+        .news-item:hover img {
+            opacity: 0.8; /* Dim the image on hover */
+        }
+
+        /* Hover overlay applied directly to the image container */
+        .image-container {
+            position: relative;
+        }
+
+        .hover-overlay {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Darker overlay */
+            color: white;
+            padding: 1rem;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 0.9rem;
+            z-index: 2; /* Ensure overlay is above the image */
+        }
+
+        .image-container:hover .hover-overlay {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hover-overlay h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .hover-overlay p {
+            margin: 0.2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .news-content {
+            padding: 2rem;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0 0 0.5rem;
+        }
+
+        .news-description {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0 0 1rem;
+        }
+
+        .news-link {
+            text-decoration: none;
+            color: #50c878;
+            font-weight: bold;
+        }
+		
+		.warc-button {
+			text-decoration: none;
+			color: #50c878; /* Green color */
+			font-weight: bold;
+			background-color: transparent;
+			padding: 0.5rem 1rem;
+			display: inline-block;
+			margin-top: 1rem; /* To give it some space from the text */
+			transition: background-color 0.3s, color 0.3s;
+		}
+
+
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+     <header>
+        <div class="logo">
+			<a href="index.html">
+				<img src="picture/logo.rmv.bg.png" alt="E-COMMERCE Logo">
+			</a>
+		</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="news&update.html">News & Updates</a></li>
+                <li class="dropdown">
+                    <a href="#">Archive</a>
+                    <ul class="dropdown-content">
+                        <li><a href="archive.html">Job Market</a></li>
+                        <li><a href="archive2.html"> Education</a></li>
+                    </ul>
+                </li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Add the image below the header -->
+    <img src="picture/headernews.png" alt="Header News" style="width: 100%; height: auto; display: block;">
+    <main>
+        <div class="news-grid">
+            <div class="news-item">
+                <div class="image-container">
+                    <img src="picture/news.png" alt="Program Manager">
+                    <div class="hover-overlay">
+                        <h3>DESCRIPTION</h3>
+                        <p>* Archive success: YES</p>
+                        <p>* Duration: 23:24:43</p>
+                        <p>* File size: 18626961 bytes</p>
+                        <p>* File archived: 224 files</p>
+                    </div>
+                </div>
+                <div class="news-content">
+                    <p class="news-title">Driving Transformation in E-Commerce: Visionary leadership of program manager</p>
+                    <p class="news-description">Anoop Kumar, a Senior Technical Program Manager at a top-tier e-commerce company, who has orchestrated transformative programs that reshape how e-commerce operates.</p>
+                    <a href="https://www.dnaindia.com/business/report-driving-transformation-in-e-commerce-the-visionary-leadership-of-a-program-manager-3120231" class="news-link">Read more</a>
+                </div>
+            </div>
+			
+            <div class="news-item">
+                <div class="image-container">
+                    <img src="picture/news2.png" alt="Hiring in E-Commerce">
+                    <div class="hover-overlay">
+                        <h3>DESCRIPTION</h3>
+                        <p>* Archive success: YES</p>
+                        <p>* Duration: 23:48:50</p>
+                        <p>* File size: 7955937 bytes</p>
+                        <p>* File archived: 77 files</p>
+                    </div>
+                </div>
+                <div class="news-content">
+                    <p class="news-title">Here’s Who Is Hiring in E-Commerce and Technology</p>
+                    <p class="news-description">We collate every job opportunity live on BoF Careers for applicants seeking to work in E-Commerce and Technology.</p>
+                    <a href="https://www.businessoffashion.com/articles/workplace-talent/heres-who-is-hiring-in-e-commerce-and-technology/" class="news-link">Read more</a>
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+                    <img src="picture/news3.png" alt="Hiring in E-Commerce">
+                    <div class="hover-overlay">
+                        <h3>DESCRIPTION</h3>
+                        <p>* Archive success: YES</p>
+                        <p>* Duration: 23:57:04</p>
+                        <p>* File size: 1743693 bytes</p>
+                        <p>* File archived:  27 files</p>
+                    </div>
+                </div>
+                <div class="news-content">
+                    <p class="news-title">Myer appoints GM of e-commerce</p>
+                    <p class="news-description">Myer has welcomed Lynna Barnard to the newly created role of general manager of e-commerce, responsible for end-to-end e-commerce encompassing trade, operations and online content.</p>
+                    <a href="https://www.applianceretailer.com.au/myer-appoints-gm-of-e-commerce/" class="news-link">Read more</a>
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+                    <img src="picture/news4.jpg" alt="Hiring in E-Commerce">
+                    <div class="hover-overlay">
+                        <h3>DESCRIPTION</h3>
+                        <p>* Archive success: YES</p>
+                        <p>* Duration: 00:03:56 </p>
+                        <p>* File size: 45489215 bytes</p>
+                        <p>* File archived: 260 files</p>
+                    </div>
+                </div>
+                <div class="news-content">
+                    <p class="news-title">Meet Edward Choo: E-Commerce Manager, Singapore</p>
+                    <p class="news-description">Although I graduated with a bachelor’s degree in Political Science, I took a different career path than expected – becoming an expert in e-commerce.</p>
+                    <a href="https://anymindgroup.com/people/edward-choo-d2c-sg" class="news-link">Read more</a>
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+                    <img src="picture/news5.png" alt="Hiring in E-Commerce">
+                    <div class="hover-overlay">
+                        <h3>DESCRIPTION</h3>
+                        <p>* Archive success: YES</p>
+                        <p>* Duration: 00:08:26</p>
+                        <p>* File size: 6326325 bytes </p>
+                        <p>* File archived:  36 files </p>
+                    </div>
+                </div>
+                <div class="news-content">
+                    <p class="news-title">Asian e-commerce races to innovate as consumer demands rise</p>
+                    <p class="news-description">With half of Asia's population expected to be shopping online by 2029, key industry leaders believe that the region is not only adapting to changing consumer habits but also setting the pace for innovation globally.</p>
+                    <a href="https://retailasia.com/videos/asian-e-commerce-races-innovate-consumer-demands-rise#:~:text=Fast%2Dpaced%20growth%20and%20delivery,the%20pace%20for%20innovation%20globally." class="news-link">Read more</a>
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+                    <img src="picture/news6.png" alt="Hiring in E-Commerce">
+                    <div class="hover-overlay">
+                        <h3>DESCRIPTION</h3>
+                        <p>* Archive success: YES</p>
+                        <p>* Duration: 00:13:32</p>
+                        <p>* File size: 4033030 bytes </p>
+                        <p>* File archived:  54 files </p>
+                    </div>
+                </div>
+                <div class="news-content">
+                    <p class="news-title">Amazon to lay off 200 people in its North America retail operations</p>
+                    <p class="news-description">The e-commerce giant said it is cutting a small number of roles after a routine evaluation of its team structures and ability to “move fast.”</p>
+                    <a href="https://www.retaildive.com/news/amazon-layoffs-200-people-north-america-retail-operations/737652/#:~:text=Amazon%20has%20eliminated%20roles%20across,operations%2C%20the%20company%20confirmed%20Thursday." class="news-link">Read more</a>
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+                    <img src="picture/news7.png" alt="Hiring in E-Commerce">
+                    <div class="hover-overlay">
+                        <h3>DESCRIPTION</h3>
+                        <p>* Archive success: YES</p>
+                        <p>* Duration:  00:16:51</p>
+                        <p>* File size: 4029029 bytes </p>
+                        <p>* File archived:  56 files</p>
+                    </div>
+                </div>
+                <div class="news-content">
+                    <p class="news-title">Target taps new execs to lead store and digital teams</p>
+                    <p class="news-description">Two longtime company veterans are retiring as part of the changes, which came as the retailer reported encouraging sales growth in the holiday season.</p>
+                    <a href="https://www.retaildive.com/news/target-digital-store-execs-holiday-sales-Q4-preview/737561/" class="news-link">Read more</a>
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+                    <img src="picture/news8.png" alt="Hiring in E-Commerce">
+                    <div class="hover-overlay">
+                        <h3>DESCRIPTION</h3>
+                        <p>* Archive success: YES</p>
+                        <p>* Duration: 00:22:59</p>
+                        <p>* File size: 4054663 bytes </p>
+                        <p>* File archived: 58 files</p>
+                    </div>
+                </div>
+                <div class="news-content">
+                    <p class="news-title">Holiday e-commerce hits a record as shoppers choose phones over stores</p>
+                    <p class="news-description">Consumers sought out deals but inflation didn’t really tamp down demand during the season, according to the latest figures from Adobe Analytics.</p>
+                    <a href="https://www.retaildive.com/news/holiday-e-commerce-soars-record-241-billion-cellphones-over-stores/736774/" class="news-link">Read more</a>
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+                    <img src="picture/news10.png" alt="Hiring in E-Commerce">
+                    <div class="hover-overlay">
+                        <h3>DESCRIPTION</h3>
+                        <p>* Archive success: YES</p>
+                        <p>* Duration:00:34:29 </p>
+                        <p>* File size: 3200606 bytes </p>
+                        <p>* File archived:16 files </p>
+                    </div>
+                </div>
+                <div class="news-content">
+                    <p class="news-title">How underdog e-commerce companies can thrive in a landscape dominated by industry Goliaths</p>
+                    <p class="news-description">THE ARTICLES ON THESE PAGES ARE PRODUCED BY BUSINESS REPORTER, WHICH TAKES SOLE RESPONSIBILITY FOR THE CONTENTS.</p>
+                    <a href="https://www.independent.co.uk/news/business/business-reporter/ecommerce-consumers-small-businesses-brands-b2632777.html" class="news-link">Read more</a>
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+                    <img src="picture/news11.png" alt="Hiring in E-Commerce">
+                    <div class="hover-overlay">
+                        <h3>DESCRIPTION</h3>
+                        <p>* Archive success: YES</p>
+                        <p>* Duration:18:12:20 </p>
+                        <p>* File size: 984476867 bytes</p>
+                        <p>* File archived: 1994 files </p>
+                    </div>
+                </div>
+                <div class="news-content">
+                    <p class="news-title">Video app TikTok leans into e-commerce with Shopify deal</p>
+                    <p class="news-description">The popular short-form video app TikTok, still under U.S. government scrutiny for its Chinese ownership, is moving closer to becoming a marketplace for buying stuff.</p>
+                    <a href="https://www.independent.co.uk/news/world/americas/video-app-tiktok-leans-into-ecommerce-with-shopify-deal-shopify-walmart-us-bytedance-donald-trump-b1374877.html" class="news-link">Read more</a>
+                </div>
+            </div>
+			<div class="news-item">
+				<div class="image-container">
+					<img src="picture/news12.png" alt="Hiring in E-Commerce">
+					<div class="hover-overlay">
+						<h3>DESCRIPTION</h3>
+						<P> Archive success: YES</P>
+						<P>File size: 2.42 MB</P>
+						<P>Capture time: 11secs</P>
+					</div>
+				</div>
+				<div class="news-content">
+					<p class="news-title">Instagram's new feature makes it possible to shop without leaving the app</p>
+					<p class="news-description">Instagram is transforming e-commerce by making it easier than ever to shop online, with the introduction of checkout.</p>
+					<a href="https://www.independent.co.uk/tech/instagram-checkout-shopping-app-feature-new-a8830116.html" class="news-link">Read more</a>
+					<a href="https://drive.google.com/file/d/1i6Tf-nw8cvfTzI74bkP352RRmBNnkyVd/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+
+				</div>
+			</div>
+			<div class="news-item">
+                <div class="image-container">
+					<img src="picture/news13.png" alt="Hiring in E-Commerce">
+					<div class="hover-overlay">
+						<h3>DESCRIPTION</h3>
+						<P> Archive success: YES</P>
+						<P>File size: 2.69 MB</P>
+						<P>Capture time: 8secs</P>
+					</div>
+				</div>
+                <div class="news-content">
+                    <p class="news-title">Tech war: China’s TikTok sellers eye Amazon and Shein as US ban looms</p>
+                    <p class="news-description">Chinese merchants on TikTok are taking precautionary measures to prepare for a looming ban of the short-video app in the United States, including switching to competing platforms and focusing on other overseas markets.</p>
+                    <a href="https://www.scmp.com/tech/tech-war/article/3294719/tech-war-chinas-tiktok-sellers-eye-amazon-and-shein-us-ban-looms" class="news-link">Read more</a>
+					<a href="https://drive.google.com/file/d/1uE3qmYuJNyuBX0Bv3sL3Zs__UxDVjAa-/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+					<img src="picture/news14.png" alt="Hiring in E-Commerce">
+					<div class="hover-overlay">
+						<h3>DESCRIPTION</h3>
+						<P> Archive success: YES</P>
+						<P>File size: 985.51 KB</P>
+						<P>Capture time: 5secs</P>
+					</div>
+				</div>
+                <div class="news-content">
+                    <p class="news-title">Online shoppers behave differently after chatting with staff of the opposite gender, new research shows – here’s why businesses should be paying attention</p>
+                    <p class="news-description">In a digital world where people are mere pixels on a screen, gender bias can show up in unexpected forms. That’s what our research team found in a field experiment published in the Journal of Operations Management.</p>
+                    <a href="https://theconversation.com/online-shoppers-behave-differently-after-chatting-with-staff-of-the-opposite-gender-new-research-shows-heres-why-businesses-should-be-paying-attention-225962" class="news-link">Read more</a>
+					<a href="https://drive.google.com/file/d/1Fuz9rDHuocSx6SDCCfp3oA8IK5dN4u8X/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+					<img src="picture/news15.png" alt="Hiring in E-Commerce">
+					<div class="hover-overlay">
+						<h3>DESCRIPTION</h3>
+						<P> Archive success: YES</P>
+						<P>File size: 2.01 MB</P>
+						<P>Capture time: 7secs</P>
+					</div>
+				</div>
+                <div class="news-content">
+                    <p class="news-title">The problem with cashless payments</p>
+                    <p class="news-description">Citizens living in the euro area make an average of 13 payments per week of all types. They circulate through a range of channels and by way of different media, including cash, payment cards, and online.</p>
+                    <a href="https://theconversation.com/the-problem-with-cashless-payments-197747" class="news-link">Read more</a>
+					<a href="https://drive.google.com/file/d/1QHwJixF9SgdmlIoT2Un4NtPlXjxVb65G/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+					<img src="picture/news16.png" alt="Hiring in E-Commerce">
+					<div class="hover-overlay">
+						<h3>DESCRIPTION</h3>
+						<P> Archive success: YES</P>
+						<P>File size: 802.97 KB</P>
+						<P>Capture time: 16secs</P>
+					</div>
+				</div>
+                <div class="news-content">
+                    <p class="news-title">Could cargo bike deliveries help green e-commerce?</p>
+                    <p class="news-description">As the world moves toward decarbonization, every option for slashing humanity’s carbon footprint must be on the table. As it stands, transport represents almost a quarter of Europe’s greenhouse gas (GHG) emissions, with the rise of e-commerce and on-demand, express deliveries worsening matters further.</p>
+                    <a href="https://theconversation.com/could-cargo-bike-deliveries-help-green-e-commerce-188484" class="news-link">Read more</a>
+					<a href="https://drive.google.com/file/d/1aJA3upGpdg1nQ-AC862tUH_vJnNhP8wh/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+					<img src="picture/news17.png" alt="Hiring in E-Commerce">
+					<div class="hover-overlay">
+						<h3>DESCRIPTION</h3>
+						<P> Archive success: YES</P>
+						<P>File size: 1.42 MB</P>
+						<P>Capture time: 11secs</P>
+					</div>
+				</div>
+                <div class="news-content">
+                    <p class="news-title">Unlocking the potential of E-commerce in Egypt: A Market on the Rise</p>
+                    <p class="news-description">The internet penetration rate reached 72.2% in 2022/2023, according to Brief Report on ICT Indicators issued by the ICT Ministry in November 2024</p>
+                    <a href="https://www.zawya.com/en/economy/north-africa/unlocking-the-potential-of-e-commerce-in-egypt-a-market-on-the-rise-n3mfyrdv" class="news-link">Read more</a>
+					<a href="https://drive.google.com/file/d/1WVjNBE2TczUaGWOjPQceFe2BOXkflhbT/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+					<img src="picture/news18.png" alt="Hiring in E-Commerce">
+					<div class="hover-overlay">
+						<h3>DESCRIPTION</h3>
+						<P> Archive success: YES</P>
+						<P>File size: 649.50 KB</P>
+						<P>Capture time: 18secs</P>
+					</div>
+				</div>
+                <div class="news-content">
+                    <p class="news-title">Walmart teams up with delivery firm Meituan in bid to boost China e-commerce sales</p>
+                    <p class="news-description">The move will help Walmart accelerate its e-commerce business in China, which accounts for nearly half of its sales in the country, Walmart's China unit said in a Wechat post.</p>
+                    <a href="https://www.zawya.com/en/business/retail-and-consumer/walmart-teams-up-with-delivery-firm-meituan-in-bid-to-boost-china-e-commerce-sales-jrqna0tb" class="news-link">Read more</a>
+					<a href="https://drive.google.com/file/d/1kNc6khZ1-IBwyBkOA4WELYELPb2tZmYu/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+					<img src="picture/news19.png" alt="Hiring in E-Commerce">
+					<div class="hover-overlay">
+						<h3>DESCRIPTION</h3>
+						<P> Archive success: YES</P>
+						<P>File size: 6.36 MB</P>
+						<P>Capture time: 2min</P>
+					</div>
+				</div>
+                <div class="news-content">
+                    <p class="news-title">Seddiqi Holding's Mizzen launches On's first direct-to-consumer e-commerce platform in the UAE</p>
+                    <p class="news-description">Dubai, UAE: Seddiqi Holding’s Mizzen, the primary representative for On in the GCC and Jordan, announces the launch of www.On.ae, a dedicated e-commerce platform to bring the Swiss premium sportswear brand directly to UAE consumers.</p>
+                    <a href="https://www.zawya.com/en/press-release/companies-news/seddiqi-holdings-mizzen-launches-ons-first-direct-to-consumer-e-commerce-platform-in-the-uae-nj5hflk3" class="news-link">Read more</a>
+					<a href="https://drive.google.com/file/d/1OOx98jnUx6MRmj0Sc9eSLpt7gsiNeYJu/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+					<img src="picture/news20.png" alt="Hiring in E-Commerce">
+					<div class="hover-overlay">
+						<h3>DESCRIPTION</h3>
+						<P> Archive success: YES</P>
+						<P>File size: 1.29 MB</P>
+						<P>Capture time: 7secs</P>
+					</div>
+				</div>
+                <div class="news-content">
+                    <p class="news-title">Qatar Airways Cargo and Cainiao strengthen partnership to meet global e-commerce demand</p>
+                    <p class="news-description">Through this collaboration, both companies continue to enhance connectivity and reliability for businesses and consumers across the globe.</p>
+                    <a href="https://www.zawya.com/en/business/transport-and-logistics/qatar-airways-cargo-and-cainiao-strengthen-partnership-to-meet-global-e-commerce-demand-nmm0hqz1" class="news-link">Read more</a>
+					<a href="https://drive.google.com/file/d/1zaGv1hbrGzu3o4bQ8dseot8dCdv2rB4y/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+                </div>
+            </div>
+			<div class="news-item">
+                <div class="image-container">
+					<img src="picture/news21.png">
+					<div class="hover-overlay">
+						<h3>DESCRIPTION</h3>
+						<P> Archive success: YES</P>
+						<P>File size: 5.04 MB</P>
+						<P>Capture time: 21secs</P>
+					</div>
+				</div>
+                <div class="news-content">
+                    <p class="news-title">This Digital Nomad Built a Global Supply Chain Business</p>
+                    <p class="news-description">Building a business from a bedroom, home office, or garage is not uncommon. Succeeding in seeding a startup organization while constantly on the move is quite a bit more challenging.</p>
+                    <a href="https://www.ecommercetimes.com/story/this-digital-nomad-built-a-global-supply-chain-business-178165.html" class="news-link">Read more</a>
+					<a href="https://drive.google.com/file/d/1FANMSImOE3z6jbGjHFe05hx0rfGvTVXB/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+                </div>
+            </div>
+		</div>
+    </main>
+    <footer>
+        <p>&copy; 2025 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

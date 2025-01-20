@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - E-COMMERCE</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header, footer {
+            background: linear-gradient(90deg, #9cbb84, #50c878);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo img {
+            height: 90px; 
+            width: auto; 
+            display: block;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: white;
+            color: #50c878;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-content li {
+            list-style: none;
+        }
+
+        .dropdown-content li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dropdown-content li a:hover {
+            background-color: #50c878;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        main .section-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem; /* Add space between the boxes */
+            justify-content: space-between; /* Adjust spacing between boxes */
+        }
+
+        .section {
+            flex: 1 1 calc(25% - 1rem); /* Each box takes up 25% minus the gap */
+            max-width: calc(25% - 1rem); /* Ensure each box doesn't exceed 25% width */
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .section h3 {
+            font-size: 1.5rem;
+            color: #3da759;
+            margin-bottom: 0.5rem;
+        }
+
+        .section p {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="picture/logo.rmv.bg.png" alt="E-COMMERCE Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="news&update.html">News & Updates</a></li>
+                <li class="dropdown">
+                    <a href="#">Archive</a>
+                    <ul class="dropdown-content">
+                        <li><a href="archive.html">Job Market</a></li>
+                        <li><a href="archive2.html">Education</a></li>
+                    </ul>
+                </li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <video autoplay muted loop>
+        <source src="video/video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <main>
+        <div class="section-wrapper">
+			<section class="section">
+				<img src="picture/index1.jpeg" alt="Inspiration Behind the Project" style="width: 100%; height: auto;">
+				<h3>Inspiration Behind the Project</h3>
+				<p>
+					The inspiration for this project comes from the dramatic transformation and rapid growth of the e-commerce industry over the past two decades. E-commerce has fundamentally reshaped the way businesses operate and consumers interact with goods and services. 
+				</p>
+			</section>
+
+			<section class="section">
+			<img src="picture/index2.jpg" alt="Inspiration Behind the Project" style="width: 100%; height: auto;">
+				<h3>The Importance of Web Archiving in E-Commerce</h3>
+				<p>
+					Web archiving is a critical process for preserving the rapidly changing world of e-commerce. E-commerce platforms, websites, and applications are dynamic by nature; they are updated frequently to reflect new products, services, and technologies. Without proactive archiving, we risk losing a comprehensive understanding of how e-commerce has shaped our world.
+				</p>
+			</section>
+
+			<section class="section">
+			<img src="picture/index3.jpg" alt="Inspiration Behind the Project" style="width: 100%; height: auto;">
+				<h3>Why We Choose to Preserve E-Commerce</h3>
+				<p>
+					Our decision to focus on preserving e-commerce stems from its unparalleled influence on the modern economy and its potential to shape the future. E-commerce is no longer just an alternative to traditional shopping—it is now a dominant force in global trade. Preserving this phenomenon is essential for understanding its impact on businesses, consumers, and economies.
+				</p>
+			</section>
+		</div>
+
+    </main>
+
+    <footer>
+        <p class="footer-text">&copy; 2025 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

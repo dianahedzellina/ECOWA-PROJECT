@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive Page - E-COMMERCE</title>
+    <style>
+         body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header, footer {
+            background: linear-gradient(90deg, #9cbb84, #50c878);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+		.logo img {
+			height: 90px; 
+			width: auto; 
+			display: block;
+		}
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: white;
+            color: #50c878;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-content li {
+            list-style: none;
+        }
+
+        .dropdown-content li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dropdown-content li a:hover {
+            background-color: #50c878;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+		
+		
+        main {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2C5F2D;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(44, 95, 45, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 10px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            border-top: 2px solid #4CAF50;
+            padding-top: 10px;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .job-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .job-box {
+            background-color: white;
+            border: 2px solid #50c878;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .job-box h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #50c878;
+        }
+
+        .job-box p {
+            margin: 0.5rem 0;
+        }
+		
+		.job-box img {
+			width: 100%;
+			object-fit: cover; 
+			border-radius: 10px;
+			margin-bottom: 15px;
+			outline: 2px solid #50c878; 
+		}
+
+        .hover-overlay {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .job-box:hover .hover-overlay {
+            display: block;
+        }
+
+        .hover-overlay h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .hover-overlay p {
+            margin: 0.2rem 0;
+        }
+
+        .hover-overlay .view-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #50c878;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .hover-overlay .view-button:hover {
+            background-color: white;
+            color: #50c878;
+            transform: scale(1.1);
+        }
+
+        .hover-overlay .warc-button {
+            display: inline-block;
+            margin-top: 1rem;
+            margin-left: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #50c878;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .hover-overlay .warc-button:hover {
+            background-color: white;
+            color: #50c878;
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .header-image {
+            width: 100%;
+            height: auto;
+        }
+		
+		.job-box img {
+        width: 100%;
+        height: 200px; /* Set a fixed height */
+        object-fit: cover; /* Ensure images are cropped proportionally */
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+    </style>
+	</head>
+	<body>
+		<header>
+        <div class="logo">
+			<a href="index.html">
+				<img src="picture/logo.rmv.bg.png" alt="E-COMMERCE Logo">
+			</a>
+		</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="news&update.html">News & Updates</a></li>
+                <li class="dropdown">
+                    <a href="#">Archive</a>
+                    <ul class="dropdown-content">
+                        <li><a href="archive.html">Job Market</a></li>
+                        <li><a href="archive2.html"> Education</a></li>
+                    </ul>
+                </li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+	<div style="display: flex; align-items: flex-start; gap: 2rem; justify-content: center;">
+    <!-- Team Role Section -->
+    <div style="flex: 2;">
+        <h1 class="main-title">E- COMMERCE EDUCATION</h1>
+			</div>
+			</div>
+        <div class="job-container">
+            <div class="job-box">
+			<img src="picture/education1.png" alt="education image">
+                <h2>E-Commerce Manager</h2>
+                <p><strong>What is an e-commerce manager?</strong></p>
+                <p>- As an e-commerce manager, you are responsible for improving...</p>
+                <p><strong>Average E-commerce Manager Salary:</strong></p>
+                <p>- The salary of an e-commerce manager starting out is...</p>
+
+                <div class="hover-overlay">
+                    <h3>DESCRIPTION</h3>
+                    <p>* Archive success: YES</p>
+                    <p>* File size: 1.28 MB</p>
+                    <p>* Capture time: 23secs</p>
+                    <a href="https://www.randstad.co.uk/career-advice/job-profiles/e-commerce-manager/" target="_blank" class="view-button">View Page</a>
+                    <a href="https://drive.google.com/file/d/1Nthsh_cg-N6qTcvcIBCjmx6_X3xLCgpI/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+                </div>
+            </div>
+            <div class="job-box">
+			<img src="picture/education2.png" alt="education image">
+                <h2>E-commerce Manager: What He Does and How Much He Earns</h2>
+                <p><strong>Who is and what does an e-Commerce Manager do?</strong></p>
+                <p>- The eCommerce manager is the supervisor of the management of the online...</p>
+                <p><strong>The Duties of an E-commerce Manager:</strong></p>
+                <p>- Website design – in contact with...</p>
+
+                <div class="hover-overlay">
+                    <h3>DESCRIPTION</h3>
+                    <p>* Archive success: YESS</p>
+                    <p>* File size: 1.43 MB</p>
+                    <p>* Capture time: 14secs</p>
+                    <a href="https://www.digital-coach.com/articles/digital-job/professions/e-commerce-manager/" target="_blank" class="view-button">View Page</a>
+                    <a href="https://drive.google.com/file/d/1XUppy8jLr-HHzyUgjmAUongmwJzqtUue/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+                </div>
+            </div>
+            <div class="job-box">
+			<img src="picture/education3.png" alt="education image">
+                <h2>Ecommerce Manager: The Professional Behind the Success of an Online Store</h2>
+                <p><strong>What is an ecommerce manager?</strong></p>
+                <p>- The Ecommerce Manager is a fundamental role...</p>
+                <p><strong>What does an ecommerce manager do?</strong></p>
+                <p>- The ecommerce manager is the driving force behind online sales strategies and...</p>
+
+                <div class="hover-overlay">
+                    <h3>DESCRIPTION</h3>
+                    <p>* Archive success: YESS</p>
+                    <p>* File size: 633.03 KB</p>
+                    <p>* Capture time: 13secs</p>
+                    <a href="https://orienteed.com/en/ecommerce-manager-the-professional-behind-the-success-of-an-online-store/" target="_blank" class="view-button">View Page</a>
+                    <a href="https://drive.google.com/file/d/1OpRD4Vov1QsTS5peSCaURUxj3t2c5dIF/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+                </div>
+            </div>
+			<div class="job-box">
+			<img src="picture/education4.png" alt="education image">
+					<h2>eCommerce Manager: The Key Role in a Digital Business Strategy</h2>
+					<p><strong>What is an eCommerce Manager?</strong></p>
+					<p>- Commerce has become an integral part of business strategy. </p>
+					<p><strong>Purpose of an eCommerce Manager</strong></p>
+					<p>- The primary purpose of an eCommerce Manager is to oversee and...</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YESS</p>
+					<p>* File Size: 890.74 KB</p>
+					<p>* Capture Time: 10secs</p>
+					<a href="https://blog.bogozi.com/ecommerce-manager/" target="_blank" class="view-button">View Page</a>
+					<a href="https://drive.google.com/file/d/1pQ9-wOx40lXThTcsOYfMXxEa9w71eV_B/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/education5.png" alt="education image">
+				<h2>15 Tips for Ecommerce Website Management Services</h2>
+				<p><strong>What are Ecommerce Management Services?</strong></p>
+				<p>* Ecommerce Management Services refer to the process of overseeing and coordinating all aspects of an...</p>
+				<p><strong>Benefits of Ecommerce Management Services to Grow Your Business</strong></p>
+				<p>* Ecommerce management services play a crucial role in...</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YESS</p>
+					<p>* File Size: 1.55 MB</p>
+					<p>* Capture Time: 7secs</p>
+					<a href="https://ossisto.com/blog/ecommerce-management-services/" target="_blank" class="view-button">View Page</a>
+					<a href="https://drive.google.com/file/d/14GVHjASFPfU5_G3R5q-gq5RtyIvRGpot/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/education6.png" alt="education image">
+				<h2>25 Ecommerce Manager Interview Questions and Answers</h2>
+				<p><strong>Are you familiar with the ecommerce platforms and marketplaces that we use?</strong></p>
+				<p>- The interviewer may ask you this question to see if you...</p>
+				<p><strong>What are some of the most important metrics that you track on a regular basis?</strong></p>
+				<p>- This question can help the interviewer gain insight into your...</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YESS</p>
+					<p>* File Size: 1.18 MB</p>
+					<p>* Capture Time: 7secs</p>
+					<a href="https://climbtheladder.com/ecommerce-manager-interview-questions/" target="_blank" class="view-button">View Page</a>
+					<a href="https://drive.google.com/file/d/1EUsKPNRYQHLZEN9rvlqtbO5VhkMjJgNP/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/education7.png" alt="education image">
+				<h2>What does an e-commerce manager do?</h2>
+				<p><strong>Duties and Responsibilities</strong></p>
+				<p>- The duties and responsibilities of an e-commerce manager are...</p>
+				<p><strong>Types of E-commerce Managers</strong></p>
+				<p>- E-commerce managers can specialize in various areas based on their expertise...</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YESS</p>
+					<p>* File Size: 470.54 KB</p>
+					<p>* Capture Time: 9secs</p>
+					<a href="https://www.careerexplorer.com/careers/e-commerce-manager/" target="_blank" class="view-button">View Page</a>
+					<a href="https://drive.google.com/file/d/1LN0Jp_ExSeppB9p29K_-f4yZIuODVzvC/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+				</div>
+			</div>
+			
+			<div class="job-box">
+			<img src="picture/education8.png" alt="education image">
+				<h2>e-commerce</h2>
+				<p><strong>Types of e-commerce</strong></p>
+				<p>- The main types of e-commerce business models include the following...</p>
+				<p><strong>Advantages of e-commerce</strong></p>
+				<p>- The benefits of e-commerce include its availability, accessibility,...</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YESS</p>
+					<p>* File Size: 1.38 MB</p>
+					<p>* Capture Time: 8secs</p>
+					<a href="https://www.techtarget.com/searchcio/definition/e-commerce" target="_blank" class="view-button">View Page</a>
+					<a href="https://drive.google.com/file/d/1yvMLBd8DqSqrkEsO3Q0c2jn_1c5fCtp8/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/education9.png" alt="education image">
+				<h2>What is a good e-commerce manager?</h2>
+				<p><strong>So what are the possibilities and who is the e-commerce manager?</strong></p>
+				<p>- Some companies see e-commerce management as a...</p>
+				<p><strong>Good e-commerce managers have specific competences</strong></p>
+				<p>- The most important question that companies must address is...</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YESS</p>
+					<p>* File Size: 1.15 MB</p>
+					<p>* Capture Time: 8secs</p>
+					<a href="https://brandpit.nl/en/blogs/what-is-a-good-e-commerce-manager/" target="_blank" class="view-button">View Page</a>
+					<a href="https://drive.google.com/file/d/1tjvDCQma1DsIhQi4h-6FNvjhGqPyxwPE/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/education10.png" alt="education image">
+				<h2>E-commerce Manager</h2>
+				<p><strong>How much can an E-Commerce Manager expect to earn?</strong></p>
+				<p>- That said, those with 3 to 5 years of experience can expect to earn around...</p>
+				<p><strong>How to become an E-commerce Manager?</strong></p>
+				<p>- E-commerce Management abilities are also closely linked to the world of...</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YESS</p>
+					<p>* File Size: 2.11 MB</p>
+					<p>* Capture Time: 12secs</p>
+					<a href="https://www.bbs.unibo.eu/e-commerce-manager-2/#gref" target="_blank" class="view-button">View Page</a>
+					<a href="https://drive.google.com/file/d/1NSHAMDnf3ObsDLnJdaa7M5dBGCzAUkBD/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/job16.png" alt="education image">
+				<h2>Ecommerce Manager Job Description</h2>
+				<p><strong>Ecommerce Manager: role overview</strong></p>
+				<p>- An Ecommerce Manager is a strategic leader who oversees all aspects of an online store, including...</p>
+				<p><strong>Ecommerce Manager job description template</strong></p>
+				<p>- As an Ecommerce Manager, you will lead the...</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YESS</p>
+					<p>* File Size: 1.86 MB</p>
+					<p>* Capture Time: 12secs</p>
+					<a href="https://heroify.co/job-descriptions/ecommerce-manager-job-description/" target="_blank" class="view-button">View Page</a>
+					<a href="https://drive.google.com/file/d/1bCCt4ScFmSwsy80Uho0owQ2towNoElg7/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/education12.png" alt="education image">
+				<h2>A‌ ‌Complete‌ ‌Guide‌ ‌on‌ ‌Facebook‌ ‌Commerce‌ ‌Manager‌</h2>
+				<p><strong>What is Facebook Commerce Manager?</strong></p>
+				<p>- Using Commerce Manager, you can become a more...</p>
+				<p><strong>What does Commerce Manager on Facebook do?</strong></p>
+				<p>- It is focused on making...</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YESS</p>
+					<p>* File Size: 1.40 MB</p>
+					<p>* Capture Time: 6secs</p>
+					<a href="https://www.socialpilot.co/facebook-marketing/facebook-commerce-manager" target="_blank" class="view-button">View Page</a>
+					<a href="https://drive.google.com/file/d/1VpDQ64_aAZC7-UIW8RaF3JBU-216A2L7/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+				</div>
+			</div>
+			<div class="job-box">
+			<img src="picture/education13.png" alt="education image">
+				<h2>E-Commerce Manager Job Description</h2>
+				<p><strong>Job Brief:</strong></p>
+				<p>- In this role, you will be responsible for...</p>
+				<p><strong>Requirements And Skills:</strong></p>
+				<p>- Bachelor’s degree in...</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YESS</p>
+					<p>* File Size: 2.49 MB</p>
+					<p>* Capture Time: 9secs</p>
+					<a href="https://www.velents.com/en/job-descriptions/e-commerce-manager/" target="_blank" class="view-button">View Page</a>
+					<a href="https://drive.google.com/file/d/1g0j_OOQv9H71nMikpSBOYII99NtnniRL/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/education14.jpg" alt="education image">
+				<h2>5 Skills Every E-commerce Manager Should Master</h2>
+				<p><strong>Understanding the Role of an E-commerce Manager</strong></p>
+				<p>- An e-commerce manager is primarily responsible for overseeing the...</p>
+
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YESS</p>
+					<p>* File Size: 1.37 MB</p>
+					<p>* Capture Time: 41secs</p>
+					<a href="https://iceclog.com/5-skills-every-e-commerce-manager-should-master/" target="_blank" class="view-button">View Page</a>
+					<a href="https://drive.google.com/file/d/1wNEm1hS-jTr3PD01gFqMPLNbtiYp2EBy/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/education3.png" alt="education image">
+				<h2>6 Key Challenges for Ecommerce Managers and Strategies to Overcome Them</h2>
+				<p><strong>Customers prefer to shop with their favorite retailers</strong></p>
+				<p>- Approximately 43 percent of consumers in the United States said they would prefer to shop...</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YESS</p>
+					<p>* File Size: 635.86 KB</p>
+					<p>* Capture Time: 5secs</p>
+					<a href="https://orienteed.com/en/6-key-challenges-for-ecommerce-managers/" target="_blank" class="view-button">View Page</a>
+					<a href="https://drive.google.com/file/d/191rogXZfOWC5Jeg3KEuC6jrDy3Tqs51P/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+				</div>
+			</div>
+
+			<div class="job-box">
+			<img src="picture/education16.png" alt="education image">
+				<h2>E-Commerce Assistant - Fashion</h2>
+				<p><strong>Job Description</strong></p>
+				<p>- This e-commerce role is an exciting opportunity to work with a...</p>
+				<p><strong>Main Responsibilities Will Include</strong></p>
+				<p>- Colour Swatches: Manage and update product colour swatches to...</p>
+
+				<div class="hover-overlay">
+					<h3>DESCRIPTION</h3>
+					<p>* Archive success: YESS</p>
+					<p>* File Size: 1.48 MB</p>
+					<p>* Capture Time: 5secs</p>
+					<a href="https://www.trprecruitment.com/job/e-commerce-assistant-fashion-5045-1731665902" target="_blank" class="view-button">View Page</a>
+					<a href="https://drive.google.com/file/d/1zH0t2t7qYuw1W9uJ6QtaszQsga755Ysl/view?usp=drive_link" target="_blank" class="warc-button">Download</a>
+				</div>
+			</div>
+
+			
+        </div>
+    </main>
+    <footer>
+        <p class="footer-text">&copy; 2025 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
